@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon espace - Super Bowl</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mon espace</h1>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <ul class="navbar">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="../backend/logout.php">Déconnexion</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <section id="dashboard">
+                <h2>Dashboard</h2>
+                <canvas id="betChart"></canvas>
+            </section>
+            <section id="user-info">
+                <h2>Informations</h2>
+                <!-- Les informations de l'utilisateur seront chargées ici par JavaScript -->
+            </section>
+            <section id="bet-history">
+                <h2>Historique des mises</h2>
+                <!-- L'historique des paris sera chargé ici par JavaScript -->
+            </section>
+        </div>
+    </main>
+    <script src="../js/user-space.js"></script>
+</body>
+</html>
