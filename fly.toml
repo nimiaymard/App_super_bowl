@@ -1,4 +1,4 @@
-app = "SuperBowl"
+app = "superbowl-stats-app"
 
 [build]
   builder = "Docker"
