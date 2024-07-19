@@ -13,13 +13,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
       with:
-        node-version: '20.x'  # Spécifiez ici la version de Node.js que vous souhaitez utiliser
+        php-version: '8.0' # Assurez-vous de choisir la version PHP appropriée pour votre projet
 
-    - name: Install dependencies
-      run: npm install
+    - name: Install dependencies (if any)
+      run: |
+        composer install --no-progress --prefer-dist
 
     - name: Install Flyctl
       run: |
