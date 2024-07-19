@@ -1,7 +1,5 @@
 app = "superbowl-stats-app"
 
-[build]
-  builder = "Docker"
 
 [env]
   FLY_ENV = "production"
