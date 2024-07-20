@@ -16,7 +16,7 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0' # Assurez-vous de choisir la version PHP appropriée pour votre projet
+        php-version: '8.0'  # Assurez-vous de choisir la version PHP appropriée pour votre projet
 
     - name: Install dependencies (if any)
       run: |
@@ -30,7 +30,7 @@ jobs:
 
     - name: Deploy to Fly.io
       env:
-        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        FLY_API_TOKEN:  ${{secrets.FLY_API_TOKEN }}
       run: |
         flyctl auth login --access-token $FLY_API_TOKEN
         flyctl deploy
