@@ -1,0 +1,37 @@
+<?php
+require_once 'db_connection.php';
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['error' => 'Utilisateur non connecté']);
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $match_id = $_POST['match_id'] ?? null;
+    $team = $_POST['team'] ?? null;
+    $amount = $_POST['amount'] ?? null;
+
+    if ($match_id && $team !== null && $amount !== null) {
+        try {
+            if ($amount == 0) {
+                $stmt = $pdo->prepare("DELETE FROM bets WHERE user_id = ? AND match_id = ?");
+                $stmt->execute([$user_id, $match_id]);
+                echo json_encode(['success' => 'Pari supprimé avec succès']);
+            } else {
+                $stmt = $pdo->prepare("UPDATE bets SET team = ?, amount = ? WHERE user_id = ? AND match_id = ?");
+                $stmt->execute([$team, $amount, $user_id, $match_id]);
+                echo json_encode(['success' => 'Pari mis à jour avec succès']);
+            }
+        } catch (PDOException $e) {
+            echo json_encode(['error' => 'Erreur lors de la mise à jour du pari: ' . $e->getMessage()]);
+        }
+    } else {
+        echo json_encode(['error' => 'Veuillez fournir tous les champs requis']);
+    }
+} else {
+    echo json_encode(['error' => 'Requête invalide']);
+}
+?>
