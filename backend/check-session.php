@@ -1,4 +1,12 @@
 <?php
 session_start();
-echo json_encode(['loggedIn' => isset($_SESSION['user_id'])]);
+
+header('Content-Type: application/json');
+
+if (isset($_SESSION['user_id'])) {
+    echo json_encode(['loggedIn' => true, 'userId' => $_SESSION['user_id']]);
+} else {
+    echo json_encode(['loggedIn' => false]);
+}
 ?>
+
